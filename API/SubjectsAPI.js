@@ -13,7 +13,7 @@ async function insertSubject(objectIn){
 
 async function getAllSubjects(){
     try{
-        const resultSet = await  SubjectModel.find().select({name:1,description:1,amount:1})
+        const resultSet = await  SubjectModel.find().select({name:1,description:1})
         return resultSet;
     }catch (e) {
         console.error(e.message)
@@ -22,7 +22,8 @@ async function getAllSubjects(){
 
 async function getSubject(id){
     try{
-        const resSub = await SubjectModel.findById({id:id});
+        const resSub = await SubjectModel.findById({_id:id}).populate('courses','name');
+        console.log(resSub);
         return resSub;
     }catch (e) {
 

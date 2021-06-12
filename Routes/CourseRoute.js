@@ -1,7 +1,7 @@
 const Router = require('express').Router();
 const Course = require('../API/CourseAPI');
 
-Router.post('/',async(req,res)=>{
+Router.post('/createCourse',async(req,res)=>{
 
     const bodyObj = req.body;
     const result = await Course.addCourse(bodyObj);
@@ -18,3 +18,9 @@ Router.get('/getCourseSubs/:id',async(req,res)=>{
     const resSubs = await Course.getSubjectsInCourse(id);
     res.send(resSubs);
 })
+
+Router.get('/calculateTotal/:id',async (req,res)=>{
+  const subs = await Course.totalAmount(req.params.id);
+  res.send(`${subs}`);
+})
+module.exports = Router;

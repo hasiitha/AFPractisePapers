@@ -32,6 +32,9 @@ const PORT = process.env.PORT || 5000;
 const SubjectsRoutes = require('./Routes/SubjectRoutes');
 app.use('/Subjects',SubjectsRoutes);
 
+const CoursesRoutes = require('./Routes/CourseRoute');
+app.use('/courses',CoursesRoutes);
+
 
 
 //Making app to listen on Port

@@ -14,8 +14,8 @@ Router.get('/getAllSubjects',async(req,res)=>{
 
 Router.get('/getSubject/:id',async(req,res)=>{
     const id = req.params.id;
-    const subject = Subject.getSubject(id);
-    res.send(id);
+    const subject = await Subject.getSubject(id);
+    res.send(subject);
 })
 module.exports = Router;
 
